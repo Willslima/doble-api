@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alteração de dados</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'olt/favicon.ico' %}" />
+
+  </head>
+  <body>
+    <form action="POST">
+      <div class="">
+        {%include 'partials/_nav.html'%}
+        <div class="mb-0 row mx-auto p-2 mt-2">
+          <label for="inputNome" class="col-sm-2 col-form-label"
+            >Nome do cliente</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control mt-2  bg-light text-white"
+              id="inputNome"
+              placeholder="Nome do Cliente"
+            />
+          </div>
+          <div class="d-grid gap-2 mt-2">
+            <button type="button" id="btn-buscar" class="btn btn-primary align-middle" onclick="getNome()">
+              Buscar
+            </button>
+            <button type="button" id="btn-buscar" class="btn btn-primary align-middle" onclick="getNomeSN()">
+              Buscar cliente pelo SN
+            </button>
+          </div>
+          <label for="clientes" class="col-sm-2 col-form-label mt-1"
+            >Selecione seu cliente</label
+          >
+          <div class="col-sm-10 mt-3">
+            <select class="col-sm-7 mt-2  bg-light text-white" name="clientes" id="clientes">
+              <option value="Opção 1">...</option>
+            </select>
+          </div>
+          <label for="inputNovaDesc" class="col-sm-2 col-form-label"
+          >Nova descrição</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control mt-2  bg-light text-white"
+            id="inputNovaDesc"
+            placeholder="Nome do Cliente"
+            required
+          />
+        </div>
+          <label for="inputCB" class="col-sm-1 col-form-label mt-3">CB</label>
+          <div class="col-sm-2 mt-2">
+            <input
+              type="text"
+              class="form-control mt-2  bg-light text-white"
+              id="inputCB"
+              placeholder="01,02 ... "
+              required
+            />
+          </div>
+          <label for="inputFP" class="col-sm-1 col-form-label mt-3">FP</label>
+          <div class="col-sm-2 mt-2">
+            <input
+              type="text"
+              class="form-control mt-2  bg-light text-white"
+              id="inputFP"
+              placeholder="01,02 ... "
+              required
+            />
+          </div>
+          <label for="inputCX" class="col-sm-1 col-form-label mt-3">CX</label>
+          <div class="col-sm-2 mt-2">
+            <input
+              type="text"
+              class="form-control mt-2  bg-light text-white"
+              id="inputCX"
+              placeholder="01,02 ... "
+              required
+            />
+          </div>
+          <label for="inputFS" class="col-sm-1 col-form-label mt-3">FS</label>
+          <div class="col-sm-2 mt-2">
+            <input
+              type="text"
+              class="form-control mt-2  bg-light text-white"
+              id="inputFS"
+              placeholder="01,02 ... "
+              required
+            />
+          </div>
+          
+          <div class="mb-0 row mx-auto p-2 mt-2">
+            <button type="button" id="btn-alterar" class="btn btn-primary align-middle" onclick="fazAlteracao(), registraAlteracaoDados()">
+              Alterar dados
+            </button>
+            <label for="inputNome" class="col-sm-12 col-form-label  bg-light text-white"
+              >Resultado: <h3>
+                <span id="retorno"></span>
+              </h3></label>
+        </div>
+      </div>
+    </form>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'js/alterarDesc.js' %}"></script>
+    <script src="{% static 'js/logRegistraPost.js' %}"></script>
+    <script src="{% static 'js/buscaPeloSN.js' %}"></script>
+    <script src="{% static 'js/switch.js' %}"></script>
+
+  </body>
+</html>

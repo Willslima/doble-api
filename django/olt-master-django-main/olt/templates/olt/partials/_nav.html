@@ -1,0 +1,80 @@
+<div class="col-sm-12 mb-1 mb-sm-0 mt-1">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      {% if user.perfil and user.perfil.foto_perfil %}
+      <a class="nav-link disabled" href="{% url 'menu' %}">
+      <img src="{{ user.perfil.foto_perfil.url }}" class="img rounded rounded float-start" alt="Foto de perfil" style="height: 33px; width: 26px"/>
+      </a>
+      {% else %}
+      <a class="nav-link disabled" href="{% url 'menu' %}">
+        <img
+          src="data:image/jpeg;base64,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"
+          class="img rounded rounded float-start"
+          style="height: 6vh; width: 2vw"
+          alt="..."
+        />
+      </a>
+      {% endif %}
+      
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled text-white" href="{% url 'menu' %}"
+        >Seja bem vindo(a) <span id="nome_usuario" >{{ user.first_name }}</span> !</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'menu' %}">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'provisionamento' %}">Provisionar</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'troca-equipamento' %}"
+        >Troca de equipamento</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'status' %}">Status do cliente</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sinal' %}">Verificar sinal</a>
+    </li>
+
+    
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"></a>
+    </li>
+
+    <li class="nav-item">
+      <div class="form-check form-switch ms-auto mt-2 me-3">
+          <label class="form-check-label ms-3" for="lightSwitch">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill="currentColor"
+              class="bi bi-brightness-high"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+              />
+            </svg>
+          </label>
+          <input class="form-check-input" type="checkbox" id="lightSwitch" />
+        </div>  </li>
+  </ul>
+
+
+</ul>
+  
+</div>

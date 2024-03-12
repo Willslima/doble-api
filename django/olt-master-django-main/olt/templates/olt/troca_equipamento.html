@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Provisionamento</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'olt/favicon.ico' %}"
+    />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body onload="getEquipamentos()">
+    <form action="POST">
+      <div class="">
+        {%include 'partials/_nav.html'%}
+        <div class="mb-0 row mx-auto p-2 mt-2">
+          <label for="inputNome" class="col-sm-2 col-form-label"
+            >Nome do cliente</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control mt-2 bg-light text-white"
+              id="inputNome"
+              placeholder="Nome do Cliente"
+            />
+          </div>
+          <label for="equipamentos" class="col-sm-2 col-form-label mt-2"
+            >Selecione seu cliente</label
+          >
+          <div class="col-sm-10 mt-1 ">
+            <select class="col-sm-6 mt-3  bg-light text-white" name="" id="clientes">
+              <option>Selecione seu cliente ----></option>
+            </select>
+            <button
+              type="button"
+              onclick="getNome()"
+              id="btn-troca-eqp"
+              class="btn btn-primary align-middle col-sm-2 btn-sm"
+            >
+              Pesquisar cliente
+            </button>
+
+            <button
+              type="button"
+              onclick="getNomeSN()"
+              id="btn-troca-eqp"
+              class="btn btn-primary align-middle col-sm-2 btn-sm"
+            >
+              Pesquisar cliente pelo SN
+            </button>
+
+          </div>
+          <label for="equipamentos" class="col-sm-2 col-form-label mt-2"
+            >Equipamentos</label
+          >
+          <div class="col-sm-10 mt-1">
+            <select class="col-sm-6 mt-3  bg-light text-white" name="" id="equipamentos">
+              <option>Carregando equipamentos ...</option>
+            </select>
+            <button
+              type="button"
+              onclick="getEquipamentos()"
+              class="btn btn-primary align-middle col-sm-2 btn-sm"
+            >
+              Pesquisar novamente
+            </button>
+
+          </div>
+          <div class="mb-0 row mx-auto  ">
+          <label for="ont-onu" class="col-sm-2 col-form-label mt-2"
+            >Tipo de equipamento</label
+          >
+            <select class="col-sm-2 mt-3  bg-light text-white" name="" id="ont-onu">
+              <option value="ont">Ont (Router)</option>
+              <option value="onu">Onu (Bridge)</option>
+            </select>
+          </div>
+
+          <div class="col-sm-12 mt-2">
+            <label for="" class="col-sm-12 col-form-label mt-2"
+              >Resultado:
+              <textarea
+                class="form-control  bg-light text-white"
+                id="retorno"
+                rows="3"
+                readonly
+              ></textarea>
+            </label>
+          </div>
+          <div class="d-grid gap-2 mt-1">
+            <button
+              type="button"
+              onclick="trocaEquip(),registraTrocaEquipamento()"
+              class="btn btn-primary align-middle"
+            >
+              Trocar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="{% static 'js/meuscript.js' %}"></script>
+    <script src="{% static 'js/trocaEquip.js' %}"></script>
+    <script src="{% static 'js/excluir.js' %}"></script>
+    <script src="{% static 'js/logRegistraPost.js' %}"></script>
+    <script src="{% static 'js/buscaPeloSN.js' %}"></script>
+    <script src="{% static 'js/switch.js' %}"></script>
+  </body>
+</html>
